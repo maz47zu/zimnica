@@ -142,6 +142,10 @@ Builder.load_string('''
 
 <RegisterScreen>
     name: 'register'
+    confirm_password: confirm_password
+    input_password: input_password
+    input_login: input_login
+
     FloatLayout:
         FloatLayout:
             size: root.width, root.height
@@ -151,8 +155,94 @@ Builder.load_string('''
             font_name:"Death"
             font_size: root.font_size_text
             text: 'Powrot do logowania'
-            background_color: (71/255,71/255,69/255,1)
+            background_color: (6/255,5/255,10/255,1)
             on_press: root.manager.current = 'login'
+        Label:
+            text: "REJESTRACJA"
+            font_name:"Death"
+            halign: 'center'
+            font_size: root.font_size_log
+            color: 1,1,1,1
+            size_hint: (.4,.2)
+            pos_hint: {'x':.3,'y':.7}
+        
+        
+        GridLayout:
+            pos_hint: {'x':.2,'y':.35}
+            size_hint: (.6,.4)
+            cols: 1
+            rows: 6
+
+            Label:
+                text: " Wprowadź login :"
+                font_name:"Nyala"
+                font_size: root.font_size_grid
+                text_size: self.size
+                halign: 'center'
+                valign: 'bottom'
+                color: 1,1,1,1
+                size_hint: (.5,1)
+                background_color: (18/255,31/255,48/255,1)
+
+            TextInput:
+                id: input_login
+                text: "login"
+                font_name:"Nyala"
+                halign: 'center'
+                valign: 'middle'
+                font_size: root.font_size_grid
+                size_hint: (1.5,1)
+                multiline: False
+                background_color: (5/255,5/255,10/255,1)
+                foreground_color: [1,1,1,1]
+                on_focus: root.on_focus_register()
+
+            Label:
+                text: "Wprowadź hasło :"
+                font_name:"Nyala"
+                font_size: root.font_size_grid
+                text_size: self.size
+                halign: 'center'
+                valign: 'bottom'
+                color: 1,1,1,1
+                size_hint: (.5,1)
+                background_color: (18/255,31/255,48/255,1)
+
+            TextInput:
+                id: input_password
+                text: "haslo"
+                font_name:"Nyala"
+                halign: 'center'
+                valign: 'middle'
+                font_size: root.font_size_grid
+                size_hint: (1.5,1)
+                multiline: False
+                background_color: (5/255,5/255,10/255,1)
+                foreground_color: [1,1,1,1]
+                on_focus: root.on_focus_register()
+            Label:
+                text: "Potwierdź hasło :"
+                font_name:"Nyala"
+                font_size: root.font_size_grid
+                text_size: self.size
+                halign: 'center'
+                valign: 'bottom'
+                color: 1,1,1,1
+                size_hint: (.5,1)
+                background_color: (18/255,31/255,48/255,1)
+
+            TextInput:
+                id: confirm_password
+                text: "potweirdzam"
+                font_name:"Nyala"
+                halign: 'center'
+                valign: 'middle'
+                font_size: root.font_size_grid
+                size_hint: (1.5,1)
+                multiline: False
+                background_color: (5/255,5/255,10/255,1)
+                foreground_color: [1,1,1,1]
+                on_focus: root.on_focus_register()
 <ListofSongs>
     name: 'listofsongs'
     FloatLayout:
@@ -206,8 +296,9 @@ class RegisterScreen(Screen):
     font_size_grid = NumericProperty(0)
     font_size_log = NumericProperty(0)
     font_size_text = NumericProperty(0)
-    login = ObjectProperty(None)
-    password = ObjectProperty(None)
+    confirm_password = ObjectProperty(None)
+    input_password = ObjectProperty(None)
+    input_login = ObjectProperty(None)
 
     def __init__(self, **kwarg):
         super().__init__(**kwarg)
@@ -221,6 +312,9 @@ class RegisterScreen(Screen):
         self.font_size_log = self.width/8
         self.font_size_grid = self.width/14
         self.font_size_text = self.width/20
+
+    def on_focus_register(self):
+        pass
 
 class ListofSongs(Screen):
     pass
