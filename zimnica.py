@@ -153,6 +153,19 @@ Builder.load_string('''
             text: 'Powrot do logowania'
             background_color: (71/255,71/255,69/255,1)
             on_press: root.manager.current = 'login'
+<ListofSongs>
+    name: 'listofsongs'
+    FloatLayout:
+        FloatLayout:
+            size: root.width, root.height
+        Button:
+            size_hint: (0.4, 0.06)
+            pos_hint: {'x':.02,'y':.88}
+            font_name:"Death"
+            font_size: 32
+            text: 'Powrot do logowania'
+            background_color: (71/255,71/255,69/255,1)
+            on_press: root.manager.current = 'login'
 
 ''')
 
@@ -209,6 +222,8 @@ class RegisterScreen(Screen):
         self.font_size_grid = self.width/14
         self.font_size_text = self.width/20
 
+class ListofSongs(Screen):
+    pass
 
 class TestApp(App):
 
@@ -218,6 +233,7 @@ class TestApp(App):
         sm.add_widget(LoginScreen(name='login'))
         sm.add_widget(StartScreen(name='first'))
         sm.add_widget(RegisterScreen(name='register'))
+        sm.add_widget(ListofSongs(name='listofsongs'))
         
         return sm
     
