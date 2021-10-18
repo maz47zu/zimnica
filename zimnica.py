@@ -165,6 +165,15 @@ Builder.load_string('''
             color: 1,1,1,1
             size_hint: (.4,.2)
             pos_hint: {'x':.3,'y':.7}
+        Button:
+            size_hint: (0.4, 0.09)
+            pos_hint: {'x':.3,'y':.18}
+            font_name:"Death"
+            font_size: root.font_size_log
+            text: 'ZAREJESTRUJ MNIE !!!'
+            background_color: (0/255,0/255,0/255,1)
+            color: 1,0,0,1
+            on_press: root.register_account()
         
         
         GridLayout:
@@ -257,6 +266,7 @@ Builder.load_string('''
             background_color: (71/255,71/255,69/255,1)
             on_press: root.manager.current = 'login'
 
+
 ''')
 
 class LoginScreen(Screen):
@@ -281,6 +291,7 @@ class LoginScreen(Screen):
         
     def log_in(self):
         print(self.login,self.password)
+        self.manager.current = 'listofsongs'
 
     def check_state(self,*kwargs):
         self.font_size = self.width/4
@@ -315,9 +326,14 @@ class RegisterScreen(Screen):
 
     def on_focus_register(self):
         pass
+    
+    def register_account(self):
+        pass
 
 class ListofSongs(Screen):
     pass
+
+    
 
 class TestApp(App):
 
